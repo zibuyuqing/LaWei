@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/weibo_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/timeline_feedcard_retweet_background_auto"
+    android:clickable="true"
+    android:orientation="vertical">
+    <include layout="@layout/weibo_list_item_titlebar" />
+    <include layout="@layout/weibo_list_item_body"></include>
+    <include layout="@layout/weibo_list_item_bottombar" />
+</LinearLayout>

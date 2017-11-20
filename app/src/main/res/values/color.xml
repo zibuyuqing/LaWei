@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="windowBackground">#f2f2f2</color><!--window的背景样式-->
+    <!-- TopBar 一系列颜色 -->
+    <color name="topbar_bg">#FFFFFF</color><!--顶部Bar的背景样式-->
+    <color name="topbar_center">#545454</color><!--顶部Bar字体颜色-->
+    <color name="topbar_bottom_drive">#e3e3e3</color><!--顶部Bar的底部分割线-->
+    <color name="topbar_center_highlight_bg">#e7e7e7</color><!--顶部Bar的分组的按压颜色-->
+    <color name="topbar_leftright_text">#4c4c4c</color><!--顶部Bar的左右字体的颜色-->
+    <color name="topbar_leftright_text_highlight">#f68008</color><!--顶部Bar的左右字体的高亮颜色-->
+    <!-- searchHeadView-白天 -->
+    <color name="searchHeadView_toolbar_bg">#E3E4E6</color><!--发现页的toolbar的收缩栏-->
+    <color name="searchHeadView_inner_bg">#FFFFFF</color><!--微博的普通背景颜色-->
+    <color name="discover_fragment_searchHeadView_inner_bg">#E3E4E6</color>
+
+    <!--加载的进度条 -->
+    <color name="loadding_footer_bg">#FFFFFF</color><!--底部Loading的背景-->
+    <color name="loadding_footer_text">#8A000000</color><!--底部Loading的文字背景-->
+
+    <!--空的EmptyView -->
+    <color name="empty_bg">#fcfcfc</color>
+    <color name="empty_text">#bcbcbc</color>
+
+    <!--发送微博界面 -->
+    <color name="post_bg">#FFFFFF</color>
+    <color name="post_hint">#808080</color>
+    <color name="post_text">#333333</color>
+    <color name="post_bottomBar_bg">#f9f9f9</color>
+
+    <color name="retweet_weibo_bg">#f7f7f7</color>
+    <color name="retweet_weibo_author">#313131</color>
+    <color name="retweet_weibo_text">#909090</color>
+
+    <!-- 发送按钮在普通状态下，不可点击 -->
+    <color name="normal_send_button_bg">#FFFFFF</color>
+    <color name="normal_send_button_stoke">#d8d8d8</color>
+    <color name="normal_send_button_text">#b5b5b5</color>
+
+    <!-- 发送按钮在按压状态下 -->
+    <color name="press_send_button_bg">#df7500</color>
+    <color name="press_send_button_stoke">#df7500</color>
+    <color name="press_send_button_text">#ffecd3</color>
+
+    <!-- 发送按钮在可以点击的状态下 -->
+    <color name="highlight_send_button_bg">#fe8300</color>
+    <color name="highlight_send_button_stoke">#fe8300</color>
+    <color name="highlight_send_button_text">#fbffff</color>
+
+    <color name="cancel_text">#494949</color><!--取消按钮文本颜色 -->
+    <color name="middle_send_text">#505050</color><!--topbar中间区域 发微博文本颜色 -->
+    <color name="middle_username_text">#b4b4b4</color><!--topbar中间区域 用户名文本颜色 -->
+
+
+    <color name="create_weibo_input_text">#FFFFFF</color>
+    <color name="create_weibo_input_hint">#454648</color>
+
+    <color name="limittext_text_warning">#929292</color>
+    <color name="limittext_text_outofrange">#e03f22</color>
+
+    <!--@我的 -->
+    <color name="center_area_mention_item_bg">#f7f7f7</color>
+    <color name="center_area_mention_item_bg_hightlight">#f0f0f0</color>
+    <color name="center_area_mention_item_author">#313131</color>
+    <color name="center_area_mention_item_text">#909090</color>
+
+    <!--评论我的 -->
+    <color name="comment_reply_item_bg">#f7f7f7</color>
+    <color name="comment_reply_item_bg_hightlight">#f0f0f0</color>
+    <color name="comment_reply_item_text">#5b5b5b</color>
+
+    <color name="center_area_comment_item_bg">#fefefe</color>
+
+    <color name="center_area_noreply_comment_item_bg">#f7f7f7</color>
+    <color name="center_area_comment_item_bg_hightlight">#f0f0f0</color>
+    <color name="center_area_comment_item_author">#313131</color>
+    <color name="center_area_comment_item_text">#909090</color>
+
+    <color name="reply_buttom_bg">#FFFFFF</color>
+    <color name="reply_buttom_highlight_bg">#dcdcdc</color>
+    <color name="reply_buttom_text">#909090</color>
+    <color name="reply_buttom_stoke">#d6d6d6</color>
+
+    <!-- 微博内容颜色-白天 -->
+    <color name="origin_nor_bg">#FFFFFF</color><!--微博的普通背景颜色-->
+    <color name="origin_highlight_bg">#ededed</color><!--微博的按压状态下的背景颜色-->
+    <color name="home_weiboitem_title_profile_name">#f46200</color><!--用户名称-->
+    <color name="home_weiboitem_title_profile_time">#828282</color><!--微博时间-->
+    <color name="home_weiboitem_title_weibocomefrom">#828282</color><!--微博来源-->
+    <color name="home_original_weiboitem_font">#333333</color><!--微博内容-->
+    <color name="home_weiboitem_content_keyword">#507daf</color><!--关键词的颜色-->
+
+    <!--转发的内容区-白天 -->
+    <color name="retweet_nor_bg">#f7f7f7</color><!--微博的普通背景颜色-->
+    <color name="retweet_highlight_bg">#e2e1e1</color><!--微博的按压状态下的背景颜色-->
+    <color name="home_retweet_weiboitem_font">#5d5d5d</color><!--转发内容中的字体颜色-->
+    <color name="home_retweet_weiboitem_bg">#f7f7f7</color><!--转发内容中的背景颜色-->
+
+    <!--显示微博转发数，评论数，赞数的bar-->
+    <color name="commentbar_bg">#FFFFFF</color><!--普通背景颜色-->
+    <color name="commentbar_highlight_bg">#f4f4f4</color><!--press的背景颜色-->
+    <color name="commentbar_top_drive">#f2f2f2</color><!--顶部的分割线-->
+    <color name="commentbar_vertical_drive">#f4f4f4</color><!--竖直的分割线-->
+
+    <!--微博底部Bar-白天 -->
+    <color name="home_bottombar_bg">#FFFFFF</color><!--底部bar的背景样式-->
+    <color name="home_bottombar_font">#929292</color><!--底部bar字体颜色-->
+    <color name="home_bottombar_topdrive">#eaeaea</color><!--顶部分割线的颜色-->
+
+    <!--状态栏-白天 -->
+    <color name="home_status_bg">#FFFFFF</color><!--状态栏的的文字样颜色-->
+    <color name="home_status_text">#FFFFFF</color><!--状态栏的的文字样颜色-->
+
+    <!--按钮栏-白天 -->
+    <color name="rl_normal_bg">#FFFFFF</color><!--状态栏的的背景颜色-->
+    <color name="rl_highlight_bg">#f2f2f2</color><!--状态栏的的背景颜色-->
+    <color name="rl_textcolor">#111111</color>
+
+    <!--正在加载时候图片的占位图颜色-白天 -->
+    <color name="loadding_img_bg">#E4E4E4</color> <!--正在加载时候图片的占位图颜色-白天 -->
+
+    <!--微博详细内容-白天 -->
+    <!--单条评论的颜色-白天 -->
+    <color name="comment_item_bg">#FFFFFF</color>
+    <color name="comment_item_name">#2f2f2f</color>
+    <color name="comment_item_comefrom">#808080</color>
+    <color name="comment_item_content">#808080</color>
+    <color name="comment_item_top_drive">#f2f2f2</color>
+
+    <!--数字，包括评论，转发，点赞栏的颜色-白天 -->
+    <color name="detail_count_bg">#FFFFFF</color>
+    <color name="detail_normal_text">#828282</color>
+    <color name="detail_highlight_text">#000000</color>
+
+
+    <!-- toast的背景色 -->
+    <color name="bg_toast">#f79f43</color>
+
+    <!--我的关注 -->
+    <color name="friend_item_name">#343434</color>
+    <color name="friend_item_description">#939393</color>
+    <color name="friend_item_button_follow_each_other">#5788BF</color> <!--互相关注 -->
+    <color name="friend_item_button_follow_alreay">#898989</color><!--已关注 -->
+    <color name="friend_item_button_follow_none">#e98219</color><!--加关注 -->
+
+    <!--我的粉丝 -->
+    <color name="follow_item_name">#343434</color>
+    <color name="follow_item_description">#595959</color>
+    <color name="follow_item_button_text">#e98219</color>
+    <color name="follow_item_constant_comefrom">#919191</color>
+    <color name="follow_item_comefrom">#4d80b2</color>
+
+    <color name="follow_item_button_follow_each_other">#5788BF</color> <!--互相关注 -->
+    <color name="follow_item_button_follow_alreay">#898989</color><!--已关注 -->
+    <color name="follow_item_button_follow_none">#e98219</color><!--加关注 -->
+
+
+    <!-- account -->
+    <color name="account_item_drive">#e5e5e5</color>
+    <color name="account_item_name">#333333</color>
+
+    <!--user详情页 -->
+    <color name="user_topbar_bg">#f4f4f4</color> <!--基本，微博，相册的bar的背景 -->
+    <color name="user_topbar_text">#929292</color> <!--基本，微博，相册的bar的文字 -->
+    <color name="user_topbar_text_highlight">#2f2f2f</color> <!--基本，微博，相册的bar的高亮文字 -->
+    <color name="user_topbar_text_drive">#ff8300</color> <!--基本，微博，相册的bar的高亮文字 -->
+    <color name="user_topbar_driver">#e5e5e5</color>
+
+    <!--user详情页的主页 -->
+    <color name="user_homepage_item_bg">#FFFFFF</color>
+    <color name="user_homepage_item_bg_hight">#f2f2f2</color>
+    <color name="user_homepage_drive">#ececec</color>
+    <color name="user_homepage_key">#919191</color>
+    <color name="user_homepage_value">#000000</color>
+
+    <!--arrowDialog  -->
+    <color name="arrow_dialog_bg">#FFFFFF</color>
+    <color name="arrow_dialog_bg_hightlight">#f2f2f2</color>
+    <color name="arrow_dialog_item_text">#000000</color>
+    <color name="arrow_dialog_item_drive">#f2f2f2</color>
+
+
+    <color name="white">#FFFFFF</color><!--白色 -->
+    <color name="orange">#FFA500</color><!--橙色 -->
+    <color name="grey">#f2f2f2</color><!--灰色 -->
+    <color name="gray">#808080</color><!--灰色 -->
+    <color name="red">#FF0000</color><!--红色 -->
+    <color name="black">#000000</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="color_ff">#F0F0F0</color>
+
+    <color name="colorPrimary">#f44336</color>
+
+    <!--Splash-->
+    <color name="splashBgColor">#f44336</color>
+
+    <!--RefreshLayout-->
+    <color name="refresh_progress_1">#536DFE</color>
+    <color name="refresh_progress_2">#f44336</color>
+    <color name="refresh_progress_3">#FF4081</color>
+
+    <!--WeiBo Content-->
+    <color name="blue">#3F51B5</color>
+    <color name="dark_blue">#303F9F</color>
+
+    <!--Emotion-->
+    <color name="transparent">#00000000</color>
+    <color name="bg_gray">#f2f2f2</color>
+</resources>

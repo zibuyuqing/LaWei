@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/activity_view_toolbar"></include>
+    <Button
+        android:id="@+id/btn_to_search"
+        android:text="开始搜索"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_write_weibo"
+        android:text="写微博"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_user_info"
+        android:text="用户信息"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_to_at_user"
+        android:text="at 用户"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
