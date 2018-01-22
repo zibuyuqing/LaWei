@@ -2,7 +2,6 @@ package com.lingy.lawei.utils;
 
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,7 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lingy.lawei.weibo.bean.Emotion;
+import com.lingy.lawei.weibo.model.bean.Emotion;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,7 +27,6 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static android.R.attr.data;
 public class StringUtil {
     public static final String WeiBo_ITEM_DATE_FORMAT = "EEE MMM d HH:mm:ss Z yyyy";
     //<a href="http://weibo.com" rel="nofollow">新浪微博</a>

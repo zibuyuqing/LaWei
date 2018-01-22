@@ -1,4 +1,4 @@
-package com.lingy.lawei.weibo.activity;
+package com.lingy.lawei.weibo.ui.activity;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
@@ -20,8 +20,8 @@ import com.lingy.lawei.utils.Logger;
 import com.lingy.lawei.weibo.api.WeiBoApi;
 import com.lingy.lawei.weibo.api.WeiBoFactory;
 import com.lingy.lawei.weibo.base.BaseActivity;
-import com.lingy.lawei.weibo.bean.User;
-import com.lingy.lawei.weibo.bean.UserList;
+import com.lingy.lawei.weibo.model.bean.User;
+import com.lingy.lawei.weibo.model.bean.UserList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

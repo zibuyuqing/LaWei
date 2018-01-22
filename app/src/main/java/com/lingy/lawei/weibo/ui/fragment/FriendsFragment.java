@@ -1,6 +1,6 @@
-package com.lingy.lawei.weibo.fragment;
+package com.lingy.lawei.weibo.ui.fragment;
 
-import com.lingy.lawei.weibo.activity.UserInfoDisplayActivity;
+import com.lingy.lawei.weibo.ui.activity.UserInfoDisplayActivity;
 import com.lingy.lawei.weibo.base.BaseUserInfoFragment;
 
 import rx.android.schedulers.AndroidSchedulers;

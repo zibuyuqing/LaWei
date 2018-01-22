@@ -1,4 +1,4 @@
-package com.lingy.lawei.weibo.bean;
+package com.lingy.lawei.weibo.model.bean;
 public class PostComments {
 
     private String access_token;

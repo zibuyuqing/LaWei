@@ -1,23 +1,19 @@
 package com.lingy.lawei.weibo.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.lingy.lawei.MyApp;
 import com.lingy.lawei.R;
 import com.lingy.lawei.utils.Logger;
-import com.lingy.lawei.weibo.activity.UserInfoDisplayActivity;
-import com.lingy.lawei.weibo.bean.User;
+import com.lingy.lawei.weibo.ui.activity.UserInfoDisplayActivity;
+import com.lingy.lawei.weibo.model.bean.User;
 
 import java.util.HashSet;
 import java.util.List;

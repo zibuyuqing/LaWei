@@ -1,9 +1,8 @@
-package com.lingy.lawei.weibo.activity;
+package com.lingy.lawei.weibo.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,11 +12,11 @@ import com.lingy.lawei.R;
 import com.lingy.lawei.weibo.adapter.FragmentPageAdapter;
 import com.lingy.lawei.weibo.base.BaseActivity;
 import com.lingy.lawei.weibo.base.BaseFragment;
-import com.lingy.lawei.weibo.bean.User;
+import com.lingy.lawei.weibo.model.bean.User;
 import com.lingy.lawei.weibo.base.BaseUserInfoFragment;
-import com.lingy.lawei.weibo.fragment.FansFragment;
-import com.lingy.lawei.weibo.fragment.FriendsFragment;
-import com.lingy.lawei.weibo.fragment.WeiBoFragment;
+import com.lingy.lawei.weibo.ui.fragment.FansFragment;
+import com.lingy.lawei.weibo.ui.fragment.FriendsFragment;
+import com.lingy.lawei.weibo.ui.fragment.WeiBoFragment;
 
 import java.util.ArrayList;
 import java.util.List;

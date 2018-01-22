@@ -1,4 +1,4 @@
-package com.lingy.lawei.weibo.bean;
+package com.lingy.lawei.weibo.model.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;

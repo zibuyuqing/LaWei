@@ -1,20 +1,15 @@
-package com.lingy.lawei.weibo.fragment;
+package com.lingy.lawei.weibo.ui.fragment;
 
-import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.lingy.lawei.MyApp;
-import com.lingy.lawei.R;
 import com.lingy.lawei.utils.Logger;
-import com.lingy.lawei.weibo.activity.UserInfoDisplayActivity;
-import com.lingy.lawei.weibo.adapter.WeiBoListAdapter;
+import com.lingy.lawei.weibo.ui.activity.UserInfoDisplayActivity;
+import com.lingy.lawei.weibo.adapter.WeiboListAdapter;
 import com.lingy.lawei.weibo.base.BaseDisplayInfoFragment;
-import com.lingy.lawei.weibo.bean.Status;
-import com.lingy.lawei.weibo.bean.StatusList;
+import com.lingy.lawei.weibo.model.bean.Status;
+import com.lingy.lawei.weibo.model.bean.StatusList;
 import java.util.List;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -26,11 +21,11 @@ import rx.schedulers.Schedulers;
 public class WeiBoFragment extends BaseDisplayInfoFragment {
     protected static final String TAG = "WeiBoFragment";
     private StatusList mStatusList = new StatusList();
-    WeiBoListAdapter mAdapter;
+    WeiboListAdapter mAdapter;
     protected void init() {
         super.init();
         if(mAdapter == null) {
-            mAdapter = new WeiBoListAdapter(mActivity, mStatusList.getStatuses());
+            mAdapter = new WeiboListAdapter(mActivity, mStatusList.getStatuses());
         }
         mXRContentList.setAdapter(mAdapter);
         Log.e(TAG,"mUid------------------- =:" + mUid);

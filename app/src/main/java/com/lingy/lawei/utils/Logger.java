@@ -7,17 +7,26 @@ import android.util.Log;
  */
 
 public class Logger {
+    public static final boolean ENABLE = true;
     private static final String TAG ="LaWei";
     public static void logE(String msg){
-        logE(TAG,msg);
+        if(ENABLE) {
+            logE(TAG, msg);
+        }
     }
     public static void logE(String tag,String msg){
-        Log.e(tag,msg);
+        if(ENABLE) {
+            Log.e(tag, msg);
+        }
     }
     public static void logD(String msg){
-        logD(TAG,msg);
+        if(ENABLE) {
+            logD(TAG, msg);
+        }
     }
     public static void logD(String tag,String msg){
-        Log.d(tag,msg);
+        if(ENABLE) {
+            Log.d(tag, msg);
+        }
     }
 }

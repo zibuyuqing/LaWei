@@ -2,6 +2,7 @@ package com.lingy.lawei.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import android.widget.LinearLayout;
 import com.lingy.lawei.R;
 import com.lingy.lawei.weibo.adapter.EmotionGvAdapter;
 import com.lingy.lawei.weibo.adapter.EmotionPagerAdapter;
-import com.lingy.lawei.weibo.bean.Emotion;
+import com.lingy.lawei.weibo.model.bean.Emotion;
 import java.util.ArrayList;
 import java.util.List;
 public class  ViewUtil implements AdapterView.OnItemClickListener {

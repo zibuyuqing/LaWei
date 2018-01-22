@@ -1,9 +1,9 @@
 package com.lingy.lawei.weibo.api;
-import com.lingy.lawei.weibo.bean.PostComments;
-import com.lingy.lawei.weibo.bean.Status;
-import com.lingy.lawei.weibo.bean.StatusList;
-import com.lingy.lawei.weibo.bean.User;
-import com.lingy.lawei.weibo.bean.UserList;
+import com.lingy.lawei.weibo.model.bean.PostComments;
+import com.lingy.lawei.weibo.model.bean.Status;
+import com.lingy.lawei.weibo.model.bean.StatusList;
+import com.lingy.lawei.weibo.model.bean.User;
+import com.lingy.lawei.weibo.model.bean.UserList;
 
 import java.util.Map;
 

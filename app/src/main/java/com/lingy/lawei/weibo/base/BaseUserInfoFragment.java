@@ -1,27 +1,14 @@
 package com.lingy.lawei.weibo.base;
 
-import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.lingy.lawei.MyApp;
-import com.lingy.lawei.R;
-import com.lingy.lawei.utils.Logger;
-import com.lingy.lawei.weibo.activity.UserInfoDisplayActivity;
 import com.lingy.lawei.weibo.adapter.UserListAdapter;
-import com.lingy.lawei.weibo.api.WeiBoApi;
-import com.lingy.lawei.weibo.api.WeiBoFactory;
-import com.lingy.lawei.weibo.bean.User;
-import com.lingy.lawei.weibo.bean.UserList;
+import com.lingy.lawei.weibo.model.bean.User;
+import com.lingy.lawei.weibo.model.bean.UserList;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import butterknife.BindView;
 
 /**
  * Created by Xijun.Wang on 2017/10/23.

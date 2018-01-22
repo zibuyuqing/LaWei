@@ -1,14 +1,13 @@
 package com.lingy.lawei;
-import android.content.Context;
 import android.content.Intent;
 import com.lingy.lawei.utils.StateUtils;
-import com.lingy.lawei.weibo.activity.BatchAtUserActivity;
-import com.lingy.lawei.weibo.activity.SearchActivity;
-import com.lingy.lawei.weibo.activity.SendWeiboActivity;
-import com.lingy.lawei.weibo.activity.UserInfoDisplayActivity;
+import com.lingy.lawei.weibo.ui.activity.BatchAtUserActivity;
+import com.lingy.lawei.weibo.ui.activity.SearchActivity;
+import com.lingy.lawei.weibo.ui.activity.SendWeiboActivity;
+import com.lingy.lawei.weibo.ui.activity.UserInfoDisplayActivity;
 import com.lingy.lawei.weibo.api.WeiBoFactory;
 import com.lingy.lawei.weibo.base.BaseActivity;
-import com.lingy.lawei.weibo.bean.User;
+import com.lingy.lawei.weibo.model.bean.User;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 
 import java.util.HashMap;

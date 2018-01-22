@@ -1,4 +1,4 @@
-package com.lingy.lawei.weibo.activity;
+package com.lingy.lawei.weibo.ui.activity;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -23,7 +23,7 @@ import android.widget.TextView;
 import com.lingy.lawei.MyApp;
 import com.lingy.lawei.R;
 import com.lingy.lawei.utils.ViewUtil;
-import com.lingy.lawei.weibo.adapter.WeiBoPhotoAdapter;
+import com.lingy.lawei.weibo.adapter.WeiboPhotoAdapter;
 import com.lingy.lawei.weibo.api.WeiBoApi;
 import com.lingy.lawei.weibo.api.WeiBoFactory;
 import com.lingy.lawei.weibo.base.BaseActivity;
@@ -96,10 +96,10 @@ public class SendWeiboActivity extends BaseActivity implements BatchCommentManag
         return true;
     }
     private List<String> photos = new ArrayList<>();
-    private WeiBoPhotoAdapter photoAdapter;
+    private WeiboPhotoAdapter photoAdapter;
     @OnClick(R.id.weibo_photo)
     void pickphoto() {
-        photoAdapter = new WeiBoPhotoAdapter(this,photos,true);
+        photoAdapter = new WeiboPhotoAdapter(this,photos,true);
         weibo_photo_grid.setAdapter(photoAdapter);
         photos.clear();
         photoAdapter.paths.clear();

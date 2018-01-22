@@ -15,16 +15,16 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.lingy.lawei.R;
 import com.lingy.lawei.utils.StringUtil;
-import com.lingy.lawei.weibo.activity.WeiBoDetailActivity;
-import com.lingy.lawei.weibo.bean.Status;
-import com.lingy.lawei.weibo.bean.User;
+import com.lingy.lawei.weibo.ui.activity.WeiBoDetailActivity;
+import com.lingy.lawei.weibo.ui.activity.WeiboDetailActivity;
+import com.lingy.lawei.weibo.model.bean.Status;
+import com.lingy.lawei.weibo.model.bean.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
@@ -32,11 +32,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by lingy on 2017-10-23.
  */
 
-public class WeiBoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class WeiboListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private List<Status> data;
     private Activity activity;
     private LayoutInflater inflater;
-    public WeiBoListAdapter(Activity activity,List<Status> data){
+    public WeiboListAdapter(Activity activity, List<Status> data){
         this.activity = activity;
         this.data = data;
         inflater = LayoutInflater.from(activity);
@@ -149,7 +149,7 @@ public class WeiBoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     };
                 }
                 rvImages.setLayoutManager(manager);
-                WeiBoPhotoAdapter photoAdapter = new WeiBoPhotoAdapter(context,urls,false);
+                WeiboPhotoAdapter photoAdapter = new WeiboPhotoAdapter(context,urls,false);
                 rvImages.setAdapter(photoAdapter);
             } else {
                 rvImages.setVisibility(View.GONE);
@@ -157,13 +157,13 @@ public class WeiBoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             llComment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    WeiBoDetailActivity.displayWeiboInfo(activity,user,status);
+                    WeiboDetailActivity.displayWeiboInfo(activity,user,status);
                 }
             });
             llWeiboLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    WeiBoDetailActivity.displayWeiboInfo(activity,user,status);
+                    WeiboDetailActivity.displayWeiboInfo(activity,user,status);
                 }
             });
         }

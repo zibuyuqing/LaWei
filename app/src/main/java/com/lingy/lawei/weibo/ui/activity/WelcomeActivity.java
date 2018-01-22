@@ -1,4 +1,4 @@
-package com.lingy.lawei.weibo.activity;
+package com.lingy.lawei.weibo.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;

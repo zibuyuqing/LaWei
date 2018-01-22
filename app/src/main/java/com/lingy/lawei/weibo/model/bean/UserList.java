@@ -1,8 +1,5 @@
 
-package com.lingy.lawei.weibo.bean;
-
-import android.os.Parcel;
-import android.os.Parcelable;
+package com.lingy.lawei.weibo.model.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;

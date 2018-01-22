@@ -17,12 +17,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class WeiBoPhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class WeiboPhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private List<String> photos;
     public List<Object> paths = new ArrayList<>();
     private boolean nativeSource = true;
-    public WeiBoPhotoAdapter(Context ctx, List<String> list,boolean nativeSource) {
+    public WeiboPhotoAdapter(Context ctx, List<String> list, boolean nativeSource) {
         context = ctx;
         photos = list;
         this.nativeSource = nativeSource;
