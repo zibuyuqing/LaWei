@@ -19,6 +19,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -165,18 +167,19 @@ public class UserListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return data.size();
     }
     class MyHolder extends RecyclerView.ViewHolder{
+        @BindView(R.id.tv_username)
         TextView username;
+        @BindView(R.id.tv_content)
         TextView content;
+        @BindView(R.id.civ_user_head)
         CircleImageView userhead;
+        @BindView(R.id.cb_select)
         CheckBox select;
         int position = 0;
         public MyHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this,itemView);
             position = getAdapterPosition();
-            username = (TextView) itemView.findViewById(R.id.tv_username);
-            content = (TextView) itemView.findViewById(R.id.tv_content);
-            userhead = (CircleImageView) itemView.findViewById(R.id.civ_user_head);
-            select = (CheckBox) itemView.findViewById(R.id.cb_select);
         }
     }
     public interface OnStateChangedListener{

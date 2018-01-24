@@ -24,10 +24,10 @@ import com.lingy.lawei.MyApp;
 import com.lingy.lawei.R;
 import com.lingy.lawei.utils.ViewUtil;
 import com.lingy.lawei.weibo.adapter.WeiboPhotoAdapter;
-import com.lingy.lawei.weibo.api.WeiBoApi;
-import com.lingy.lawei.weibo.api.WeiBoFactory;
+import com.lingy.lawei.weibo.api.WeiboApi;
+import com.lingy.lawei.weibo.api.WeiboFactory;
 import com.lingy.lawei.weibo.base.BaseActivity;
-import com.lingy.lawei.weibo.util.BatchCommentManager;
+import com.lingy.lawei.weibo.util.BatchCommentHelper;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -47,64 +47,70 @@ import rx.schedulers.Schedulers;
  * Created by lingy on 2017-10-22.
  */
 
-public class SendWeiboActivity extends BaseActivity implements BatchCommentManager.OnRequestStateChangedListener {
+public class SendWeiboActivity extends BaseActivity implements BatchCommentHelper.OnRequestStateChangedListener {
     private static final int REQUEST_CODE_ASK_PERMISSIONS = 333;
     public static final String WEIBO_ID = "weibo_id";
     public static final String AT_USER_NAMES = "atUserName";
     public static final int SEND_TYPE_CREATE_WEIBO = 0;
     public static final int SEND_TYPE_POST_COMMENT = 1;
-    private int sendType = SEND_TYPE_CREATE_WEIBO;
+    private int mSendType = SEND_TYPE_CREATE_WEIBO;
     private String weiBoId;
     @BindView(R.id.et_weibo)
-    EditText et_weibo;
+    EditText etWeibo;
     @BindView(R.id.tv_weibo_number)
-    TextView tv_weibo_number;
-    @BindView(R.id.weibo_photo_grid)
-    RecyclerView weibo_photo_grid;
+    TextView tvWeiboNumber;
+    @BindView(R.id.rv_weibo_photo)
+    RecyclerView rvWeiboPhoto;
     //表情
     @BindView(R.id.weibo_emotion)
-    ImageView weibo_emotion;
+    ImageView ivWeiboEmotion;
     @BindView(R.id.ll_emotion_dashboard)
-    LinearLayout ll_emotion_dashboard;
+    LinearLayout llEmotionDashboard;
     @BindView(R.id.vp_emotion_dashboard)
-    ViewPager vp_emotion_dashboard;
+    ViewPager vpEmotionDashboard;
+
+    private List<String> mPhotos = new ArrayList<>();
+    private WeiboPhotoAdapter mPhotoAdapter;
+
     @Override
     protected void init() {
-        weibo_photo_grid.setLayoutManager(new GridLayoutManager(this, 4));
-        new ViewUtil(this,vp_emotion_dashboard,et_weibo).initEmotion();
+        rvWeiboPhoto.setLayoutManager(new GridLayoutManager(this, 4));
+        new ViewUtil(this, vpEmotionDashboard, etWeibo).initEmotion();
         Intent intent = getIntent();
-        if(intent != null){
+        if (intent != null) {
             String atUsers = intent.getStringExtra(AT_USER_NAMES);
-            if(!TextUtils.isEmpty(atUsers)){
-                et_weibo.setText(atUsers);
+            if (!TextUtils.isEmpty(atUsers)) {
+                etWeibo.setText(atUsers);
             }
             weiBoId = intent.getStringExtra(WEIBO_ID);
-            if(!TextUtils.isEmpty(weiBoId)){
-                sendType = SEND_TYPE_POST_COMMENT;
+            if (!TextUtils.isEmpty(weiBoId)) {
+                mSendType = SEND_TYPE_POST_COMMENT;
             } else {
-                sendType = SEND_TYPE_CREATE_WEIBO;
+                mSendType = SEND_TYPE_CREATE_WEIBO;
             }
         }
     }
-    public static void toAtAndSendWeiBo(Context context, String atUser){
-        Intent intent = new Intent(context,SendWeiboActivity.class);
+
+    public static void toAtAndSendWeiBo(Context context, String atUser) {
+        Intent intent = new Intent(context, SendWeiboActivity.class);
         intent.putExtra(AT_USER_NAMES, atUser);
         context.startActivity(intent);
     }
+
     @Override
     protected boolean canBack() {
         return true;
     }
-    private List<String> photos = new ArrayList<>();
-    private WeiboPhotoAdapter photoAdapter;
+
     @OnClick(R.id.weibo_photo)
     void pickphoto() {
-        photoAdapter = new WeiboPhotoAdapter(this,photos,true);
-        weibo_photo_grid.setAdapter(photoAdapter);
-        photos.clear();
-        photoAdapter.paths.clear();
+        mPhotoAdapter = new WeiboPhotoAdapter(this, mPhotos, true);
+        rvWeiboPhoto.setAdapter(mPhotoAdapter);
+        mPhotos.clear();
+        mPhotoAdapter.paths.clear();
         PermissionToVerify();
     }
+
     /**
      * 判断当前权限是否允许,弹出提示框来选择
      */
@@ -121,9 +127,11 @@ public class SendWeiboActivity extends BaseActivity implements BatchCommentManag
         photoPick();
 
     }
+
     /**
      * 用户进行权限设置后的回调函数 , 来响应用户的操作，无论用户是否同意权限，Activity都会
      * 执行此回调方法，所以我们可以把具体操作写在这里
+     *
      * @param requestCode
      * @param permissions
      * @param grantResults
@@ -164,16 +172,17 @@ public class SendWeiboActivity extends BaseActivity implements BatchCommentManag
             }
         }
     }
+
     //更新数据适配器
     public void loadAdapter(ArrayList<String> paths) {
-        if (photos == null) {
-            photos = new ArrayList<>();
+        if (mPhotos == null) {
+            mPhotos = new ArrayList<>();
         }
-        System.out.println("~~~"+paths.size());
-        photos.clear();
-        photos.addAll(paths);
-        photoAdapter.notifyDataSetChanged();
+        mPhotos.clear();
+        mPhotos.addAll(paths);
+        mPhotoAdapter.notifyDataSetChanged();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.car_menu, menu);
@@ -182,17 +191,17 @@ public class SendWeiboActivity extends BaseActivity implements BatchCommentManag
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menu_send:
-                if(TextUtils.isEmpty(et_weibo.getText())){
+                if (TextUtils.isEmpty(etWeibo.getText())) {
                     showTips("微博内容不能为空");
-                }else {
-                    switch (sendType){
+                } else {
+                    switch (mSendType) {
                         case SEND_TYPE_CREATE_WEIBO:
-                            sendWeiBo(et_weibo.getText().toString());
+                            sendWeiBo(etWeibo.getText().toString());
                             break;
                         case SEND_TYPE_POST_COMMENT:
-                            postComment(et_weibo.getText().toString());
+                            postComment(etWeibo.getText().toString());
                             break;
                     }
 
@@ -201,62 +210,64 @@ public class SendWeiboActivity extends BaseActivity implements BatchCommentManag
         }
         return super.onOptionsItemSelected(item);
     }
-    private List<String> getPathFromAdapter(){
-        List<String> paths =  new ArrayList<>();
-        if(photoAdapter!=null) {
-            List<Object> objects = photoAdapter.paths;
+
+    private List<String> getPathFromAdapter() {
+        List<String> paths = new ArrayList<>();
+        if (mPhotoAdapter != null) {
+            List<Object> objects = mPhotoAdapter.paths;
             for (Object object : objects) {
                 if (object instanceof String) {
                     paths.add((String) object);
                 }
             }
             return paths;
-        }else {
+        } else {
             return null;
         }
     }
-    private void postComment(String comment){
-        BatchCommentManager manager = new BatchCommentManager(weiBoId);
-        manager.setRequestStateChangedListener(this);
-        manager.normalComment(comment);
+
+    private void postComment(String comment) {
+        BatchCommentHelper helper = new BatchCommentHelper(weiBoId);
+        helper.setRequestStateChangedListener(this);
+        helper.normalComment(comment);
     }
-    private void sendWeiBo(String content){
-        WeiBoApi weiBoApi = WeiBoFactory.getWeiBoApiSingleton();
-        if(photoAdapter!=null && getPathFromAdapter().size()>0){
-            weiBoApi.sendWeiBoWithImg(getTokenStr(),getTextStr(content),getImage())
+
+    private void sendWeiBo(String content) {
+        WeiboApi weiBoApi = WeiboFactory.getWeiBoApiSingleton();
+        if (mPhotoAdapter != null && getPathFromAdapter().size() > 0) {
+            weiBoApi.sendWeiBoWithImg(getTokenStr(), getTextStr(content), getImage())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(status -> {
                         finishAndToast();
-                    },this::loadError);
-        }else {
+                    }, this::loadError);
+        } else {
             String token = MyApp.getInstance().getAccessTokenHack();
-            weiBoApi.sendWeiBoWithText(getSendMap(token,content))
+            weiBoApi.sendWeiBoWithText(getSendMap(token, content))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(status -> {
                         finishAndToast();
-                    },this::loadError);
+                    }, this::loadError);
         }
     }
-    public static void toSendNewWeiBo(Context context){
-        Intent intent = new Intent(context,SendWeiboActivity.class);
+
+    public static void toSendNewWeiBo(Context context) {
+        Intent intent = new Intent(context, SendWeiboActivity.class);
         context.startActivity(intent);
     }
-    public static void toPostComment(Context context,String weiboId){
-        Intent intent = new Intent(context,SendWeiboActivity.class);
-        intent.putExtra(WEIBO_ID,weiboId);
+
+    public static void toPostComment(Context context, String weiboId) {
+        Intent intent = new Intent(context, SendWeiboActivity.class);
+        intent.putExtra(WEIBO_ID, weiboId);
         context.startActivity(intent);
     }
+
     private void finishAndToast() {
         showTips("发送成功");
         finish();
     }
 
-    private void loadError(Throwable throwable) {
-        throwable.printStackTrace();
-        showTips("发送失败");
-    }
     // get request params
     private RequestBody getTokenStr() {
         RequestBody accessBody = RequestBody.create(
@@ -267,9 +278,10 @@ public class SendWeiboActivity extends BaseActivity implements BatchCommentManag
 
     private RequestBody getTextStr(String text) {
         RequestBody contentBody = RequestBody.create(
-                MediaType.parse("text/plain"),text);
+                MediaType.parse("text/plain"), text);
         return contentBody;
     }
+
     private RequestBody getImage() {
         List<String> stringList = getPathFromAdapter();
         File file = new File(stringList.get(0));
@@ -278,42 +290,48 @@ public class SendWeiboActivity extends BaseActivity implements BatchCommentManag
                 file);
         return imageBody;
     }
-    private Map<String,Object> getSendMap(String token, String status){
-        Map<String,Object> map = new HashMap<>();
-        map.put("access_token",token);
-        map.put("status",status);
+
+    private Map<String, Object> getSendMap(String token, String status) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("access_token", token);
+        map.put("status", status);
         return map;
     }
-    @OnClick(R.id.weibo_emotion) void insertEmotion() {
+
+    @OnClick(R.id.weibo_emotion)
+    void insertEmotion() {
         //软键盘，显示或隐藏
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 //        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
-        if(ll_emotion_dashboard.getVisibility() == View.VISIBLE) {
+        if (llEmotionDashboard.getVisibility() == View.VISIBLE) {
             // 显示表情面板时点击,将按钮图片设为笑脸按钮,同时隐藏面板
-            weibo_emotion.setImageResource(R.drawable.btn_insert_emotion);
-            ll_emotion_dashboard.setVisibility(View.GONE);
-            imm.showSoftInput(et_weibo, 0);
+            ivWeiboEmotion.setImageResource(R.drawable.btn_insert_emotion);
+            llEmotionDashboard.setVisibility(View.GONE);
+            imm.showSoftInput(etWeibo, 0);
         } else {
             // 未显示表情面板时点击,将按钮图片设为键盘,同时显示面板
-            weibo_emotion.setImageResource(R.drawable.btn_insert_keyboard);
-            ll_emotion_dashboard.setVisibility(View.VISIBLE);
-            imm.hideSoftInputFromWindow(et_weibo.getWindowToken(), 0);
+            ivWeiboEmotion.setImageResource(R.drawable.btn_insert_keyboard);
+            llEmotionDashboard.setVisibility(View.VISIBLE);
+            imm.hideSoftInputFromWindow(etWeibo.getWindowToken(), 0);
         }
     }
 
-    @OnClick(R.id.weibo_topic) void insertTopic(){
-        int curPosition = et_weibo.getSelectionStart();
-        StringBuilder sb = new StringBuilder(et_weibo.getText().toString());
-        sb.insert(curPosition,"##");
+    @OnClick(R.id.weibo_topic)
+    void insertTopic() {
+        int curPosition = etWeibo.getSelectionStart();
+        StringBuilder sb = new StringBuilder(etWeibo.getText().toString());
+        sb.insert(curPosition, "##");
         // 特殊文字处理,将表情等转换一下
-        et_weibo.setText(sb);
+        etWeibo.setText(sb);
         // 将光标设置到新增完表情的右侧
-        et_weibo.setSelection(curPosition + 1);
+        etWeibo.setSelection(curPosition + 1);
     }
+
     @Override
     protected int providedLayoutId() {
         return R.layout.activity_write_weibo;
     }
+
     @Override
     public void commentFinish() {
         finishAndToast();

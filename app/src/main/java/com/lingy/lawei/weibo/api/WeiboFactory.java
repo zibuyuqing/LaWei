@@ -14,13 +14,13 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-public class WeiBoFactory {
+public class WeiboFactory {
 
     protected static final Object monitor = new Object();
-    static WeiBoApi weiBoApiSingleton = null;
+    static WeiboApi weiBoApiSingleton = null;
 
     //return Singleton
-    public static WeiBoApi getWeiBoApiSingleton() {
+    public static WeiboApi getWeiBoApiSingleton() {
         synchronized (monitor) {
             if (weiBoApiSingleton == null) {
                 weiBoApiSingleton = new weiBoApiRetrofit().getAPiService();
@@ -31,10 +31,10 @@ public class WeiBoFactory {
 
     //retrofit2.0
     static class weiBoApiRetrofit {
-        public WeiBoApi WeiBoApiService;
+        public WeiboApi WeiBoApiService;
         public static final String BASE_URL = "https://api.weibo.com/2/";
 
-        public WeiBoApi getAPiService() {
+        public WeiboApi getAPiService() {
             return WeiBoApiService;
         }
 
@@ -56,7 +56,7 @@ public class WeiBoFactory {
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
 
-            WeiBoApiService = retrofit.create(WeiBoApi.class);
+            WeiBoApiService = retrofit.create(WeiboApi.class);
         }
 
         //cache

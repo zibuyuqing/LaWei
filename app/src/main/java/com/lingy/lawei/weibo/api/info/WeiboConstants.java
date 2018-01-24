@@ -1,10 +1,10 @@
-package com.lingy.lawei.weibo.info;
+package com.lingy.lawei.weibo.api.info;
 
 /**
  * Created by lingy on 2017-10-21.
  */
 
-public class WeiBoConstants {
+public class WeiboConstants {
     public static final String APP_KEY = "211160679";
     public static final String REDIRECT_URL = "http://oauth.weico.cc";
     public static final String SCOPE = "email,direct_messages_read,direct_messages_write,friendships_groups_read,friendships_groups_write,statuses_to_me_read,follow_app_official_microblog,invitation_write";

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:layout_marginLeft="24dp"
+        android:id="@+id/select_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+    <TextView
+        android:textSize="18sp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:textColor="@color/white"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/select_all"
+        android:text="全选"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="24dp" />
+    <TextView
+        android:layout_toEndOf="@id/select_count"
+        android:layout_toStartOf="@id/select_all"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="已选择"
+        android:layout_centerVertical="true"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+</RelativeLayout>

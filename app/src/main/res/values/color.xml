@@ -188,7 +188,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="color_ff">#F0F0F0</color>
-
     <color name="colorPrimary">#f44336</color>
 
     <!--Splash-->
@@ -206,4 +205,6 @@
     <!--Emotion-->
     <color name="transparent">#00000000</color>
     <color name="bg_gray">#f2f2f2</color>
+
+    <color name="black_os4p">#cc000000</color>
 </resources>

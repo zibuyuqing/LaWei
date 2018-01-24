@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+    <include layout="@layout/weibo_list_item_titlebar"></include>
+    <TextView
+        android:id="@+id/tv_comment_content"
+        android:padding="8dp"
+        android:text="hahahahahah"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:background="@color/bg_gray"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"></TextView>
+</LinearLayout>

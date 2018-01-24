@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/grey"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/ll_setting_layout"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/activity_view_toolbar"></include>
+        <include layout="@layout/set_tag_layout"></include>
+        <Button
+            android:layout_gravity="center"
+            android:background="@drawable/custom_tag_button_bg"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp"
+            android:text="设置标签"
+            android:id="@+id/btn_set_tags"
+            android:layout_width="324dp"
+            android:layout_height="36dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_width="324dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:text="已选标签:"
+                android:id="@+id/tv_selected_tags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:text="正在查询:"
+                android:id="@+id/tv_query_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <Button
+            android:layout_gravity="center"
+            android:background="@drawable/custom_tag_button_bg"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
+            android:text="设置数量"
+            android:id="@+id/btn_set_count"
+            android:layout_width="324dp"
+            android:layout_height="36dp" />
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="324dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:text="选择的数量:"
+                android:id="@+id/tv_select_count"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:text="At的用户数量:"
+                android:id="@+id/tv_at_count"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/rv_comment_list"
+        android:layout_below="@id/ll_setting_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/ll_setting_layout"
+        android:padding="16dp"
+        android:id="@+id/tv_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="1.请先选择标签，我们会根据你的标签随机@用户\n2.选择要At的用户数量，我们会一直发评论@用户\n直到达到设定\n3.点击开始按钮，你将直观地看到@情况，也可退\n出此界面，后台会一直运行\n4.点击重置按钮恢复新状态" />
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_start"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="8dp"
+        android:src="@drawable/ic_progress" />
+</RelativeLayout>

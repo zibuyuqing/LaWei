@@ -24,11 +24,11 @@ public class WeiBoFragment extends BaseDisplayInfoFragment {
     WeiboListAdapter mAdapter;
     protected void init() {
         super.init();
+
         if(mAdapter == null) {
             mAdapter = new WeiboListAdapter(mActivity, mStatusList.getStatuses());
         }
         mXRContentList.setAdapter(mAdapter);
-        Log.e(TAG,"mUid------------------- =:" + mUid);
         if(TextUtils.isEmpty(mUid)){
             return;
         }
@@ -59,20 +59,20 @@ public class WeiBoFragment extends BaseDisplayInfoFragment {
                 }, this::loadError);
     }
     public void displayData(StatusList contentList) {
-        if(refresh) {
+        if(mRefresh) {
             mXRContentList.refreshComplete();
         } else {
             mXRContentList.loadMoreComplete();
         }
         if (contentList != null && contentList.getStatuses().size() > 0) {
-            if(!refresh){
-                hasMore = contentList.getStatuses().size() > 1;
-                if (hasMore) {
+            if(!mRefresh){
+                mHasMore = contentList.getStatuses().size() > 1;
+                if (mHasMore) {
                     List<Status> list = contentList.getStatuses();
                     mStatusList.getStatuses().addAll(list);
                     mPage++;
                 } else {
-                    hasMore = false;
+                    mHasMore = false;
                 }
             } else {
                 clearAndReplaceValue(contentList);

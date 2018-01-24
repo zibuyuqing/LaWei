@@ -13,7 +13,7 @@ import android.webkit.WebViewClient;
 import com.lingy.lawei.MainActivity;
 import com.lingy.lawei.R;
 import com.lingy.lawei.weibo.base.BaseActivity;
-import com.lingy.lawei.weibo.info.WeiBoConstants;
+import com.lingy.lawei.weibo.api.info.WeiboConstants;
 import com.lingy.lawei.weibo.util.AccessTokenKeeper;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 
@@ -37,7 +37,7 @@ public class WebViewActivity extends BaseActivity {
         mLoginURL = getIntent().getStringExtra("url");
         Log.e(TAG,mLoginURL);
         mComeFromAccoutActivity = getIntent().getBooleanExtra("comeFromAccoutActivity", false);
-        sRedirectUri = WeiBoConstants.REDIRECT_URL;
+        sRedirectUri = WeiboConstants.REDIRECT_URL;
         WebSettings settings = mWeb.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setSaveFormData(false);
@@ -54,7 +54,7 @@ public class WebViewActivity extends BaseActivity {
                             mWeb.goBack();
                         } else {
                             if (!mComeFromAccoutActivity) {
-                                Intent intent = new Intent(WebViewActivity.this, UnLoginActivity.class);
+                                Intent intent = new Intent(WebViewActivity.this, LoginActivity.class);
                                 startActivity(intent);
                                 finish();
                             } else {
@@ -136,7 +136,6 @@ public class WebViewActivity extends BaseActivity {
             accessToken.setUid(uid);
             AccessTokenKeeper.writeAccessToken(context,accessToken);
             Log.d(TAG,"uid= " + uid);
-            //mTokenListModel.addToken(context, token, expiresIn, refresh_token, uid);
             startMainActivity();
         }
     }

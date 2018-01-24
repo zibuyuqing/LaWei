@@ -67,7 +67,7 @@ public class StringUtil {
      * @param text
      * @return
      */
-    public static SpannableString getWeiBoText(Context context, String text) {
+    public static SpannableString getWeiboText(Context context, String text) {
         Resources res = context.getResources();
         //四种正则表达式
         Pattern AT_PATTERN = Pattern.compile("@[\\u4e00-\\u9fa5\\w\\-]+");

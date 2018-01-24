@@ -105,7 +105,7 @@ public class  ViewUtil implements AdapterView.OnItemClickListener {
                 StringBuilder sb = new StringBuilder(et_weibo.getText().toString());
                 sb.insert(curPosition, emotionName);
                 // 特殊文字处理,将表情等转换一下
-                et_weibo.setText(StringUtil.getWeiBoText(
+                et_weibo.setText(StringUtil.getWeiboText(
                         context,sb.toString()));
                 // 将光标设置到新增完表情的右侧
                 et_weibo.setSelection(curPosition + emotionName.length());

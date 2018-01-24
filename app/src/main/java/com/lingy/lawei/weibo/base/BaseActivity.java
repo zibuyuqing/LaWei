@@ -59,4 +59,9 @@ public abstract class BaseActivity extends AppCompatActivity{
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
     protected abstract int providedLayoutId();
+
+    public void loadError(Throwable throwable) {
+        throwable.printStackTrace();
+        showTips("加载错误");
+    }
 }

@@ -78,10 +78,10 @@ public class UserInfoDisplayActivity extends BaseActivity{
         }
         BaseFragment weibos = new WeiBoFragment();
         mFragments.add(weibos);
-        BaseUserInfoFragment fans = new FansFragment();
-        mFragments.add(fans);
         BaseUserInfoFragment friends = new FriendsFragment();
         mFragments.add(friends);
+        BaseUserInfoFragment fans = new FansFragment();
+        mFragments.add(fans);
         mPageAdapter = new FragmentPageAdapter(getSupportFragmentManager(),mFragments);
         mViewPager.setAdapter(mPageAdapter);
         mViewPager.setOffscreenPageLimit(3);
@@ -98,7 +98,7 @@ public class UserInfoDisplayActivity extends BaseActivity{
         tvUserName.setText(mUser.getScreen_name());
         tvUserDescription.setText(mUser.getDescription());
         tvWeiBosCount.setText(mUser.getStatuses_count());
-        // mei zhe ge gong neng
+        // TODO: 2018/1/24 topic 请自行实现
         tvTopicsCount.setText("0");
         tvFansCount.setText(mUser.getFollowers_count());
         tvFriendsCount.setText(mUser.getFriends_count());

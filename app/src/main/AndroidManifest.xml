@@ -16,12 +16,12 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name=".weibo.ui.activity.UnLoginActivity"></activity>
+        <activity android:name=".weibo.ui.activity.LoginActivity"></activity>
         <activity android:name=".weibo.ui.activity.WebViewActivity"></activity>
-        <activity android:name=".weibo.ui.activity.SearchActivity"></activity>
+        <activity android:name=".weibo.ui.activity.SearchUserActivity"></activity>
         <activity android:name=".weibo.ui.activity.SendWeiboActivity"></activity>
         <activity android:name=".weibo.ui.activity.UserInfoDisplayActivity"></activity>
-        <activity android:name=".weibo.ui.activity.WeiBoDetailActivity"></activity>
+        <activity android:name=".weibo.ui.activity.WeiboDetailActivity"></activity>
         <activity android:name=".weibo.ui.activity.BatchAtUserActivity"></activity>
         <!--Pick photo-->
         <activity android:name="me.iwf.photopicker.PhotoPickerActivity"

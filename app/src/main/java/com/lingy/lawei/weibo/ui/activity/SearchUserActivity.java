@@ -1,5 +1,7 @@
 package com.lingy.lawei.weibo.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.view.ActionMode;
@@ -17,8 +19,8 @@ import com.lingy.lawei.MyApp;
 import com.lingy.lawei.R;
 import com.lingy.lawei.weibo.adapter.UserListAdapter;
 import com.lingy.lawei.utils.Logger;
-import com.lingy.lawei.weibo.api.WeiBoApi;
-import com.lingy.lawei.weibo.api.WeiBoFactory;
+import com.lingy.lawei.weibo.api.WeiboApi;
+import com.lingy.lawei.weibo.api.WeiboFactory;
 import com.lingy.lawei.weibo.base.BaseActivity;
 import com.lingy.lawei.weibo.model.bean.User;
 import com.lingy.lawei.weibo.model.bean.UserList;
@@ -35,7 +37,7 @@ import rx.schedulers.Schedulers;
  * Created by lingy on 2017-10-22.
  */
 
-public class SearchActivity extends BaseActivity implements UserListAdapter.OnStateChangedListener{
+public class SearchUserActivity extends BaseActivity implements UserListAdapter.OnStateChangedListener{
     private final int ACTION_MODE_NORMAL = 0;
     private final int ACTION_MODE_MULTI_SELECT_AND_DELETE = 1;
     private String mQueryString;
@@ -44,15 +46,12 @@ public class SearchActivity extends BaseActivity implements UserListAdapter.OnSt
     private boolean hasMoreUsers = true;
     private UserListAdapter mAdapter;
     private UserList mUserList = new UserList();
-    // #ifdef LAVA_EDIT
-    // wangxijun. 2016/11/16, action
     public ActionMode mActionMode;
     private SelectActionMode mSelectActionMode;
     private TextView mSelectionAll;
     private TextView mSelectionCount;
     private boolean mIsSelectedAll = false;
     private int mActionModeType = 0;
-    // #endif
     @BindView(R.id.iv_empty_view)
     ImageView mEmptyView;
     @BindView(R.id.content_list)
@@ -75,11 +74,7 @@ public class SearchActivity extends BaseActivity implements UserListAdapter.OnSt
         }
     }
 
-    private void loadError(Throwable throwable) {
-        throwable.printStackTrace();
-        showTips("发送失败");
-    }
-    private Map<String,Object> getSendMap(String token, int page){
+    private Map<String,Object> getRequestMap(String token, int page){
         Map<String,Object> map = new HashMap<>();
         map.put("access_token", token);
         map.put("count", PER_QUARY_COUNT);
@@ -87,6 +82,7 @@ public class SearchActivity extends BaseActivity implements UserListAdapter.OnSt
         map.put("q", mQueryString);
         return map;
     }
+
     @Override
     protected void init() {
         mSelectActionMode = new SelectActionMode();
@@ -156,7 +152,7 @@ public class SearchActivity extends BaseActivity implements UserListAdapter.OnSt
         }
     }
     private void loadUsers(int page,boolean refresh){
-        WeiBoApi weiBoApi = WeiBoFactory.getWeiBoApiSingleton();
+        WeiboApi weiBoApi = WeiboFactory.getWeiBoApiSingleton();
         String token = MyApp.getInstance().getAccessTokenHack();
         if(refresh) {
             Logger.logE("刷新.......");
@@ -165,7 +161,7 @@ public class SearchActivity extends BaseActivity implements UserListAdapter.OnSt
             Logger.logE("加载更多.......");
         }
         mPage = page;
-        weiBoApi.searchUsers(getSendMap(token,mPage))
+        weiBoApi.searchUsers(getRequestMap(token,mPage))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(userList -> {
@@ -190,18 +186,13 @@ public class SearchActivity extends BaseActivity implements UserListAdapter.OnSt
                     }
                     mAdapter.notifyDataSetChanged();
                     mEmptyView.setVisibility(mAdapter.getItemCount() > 0 ? View.GONE : View.VISIBLE);
-                },SearchActivity.this::loadError);
+                },SearchUserActivity.this::loadError);
     }
-    // #ifdef LAVA_EDIT
-    // wangxijun. 2016/11/16, start select alarm and delete
+
     public void enterSelectMode() {
         mActionMode = startActionMode(mSelectActionMode);
         mActionModeType = ACTION_MODE_MULTI_SELECT_AND_DELETE;
     }
-    // #endif
-    // #endif
-    // #ifdef LAVA_EDIT
-    // wangxijun. 2016/11/16, exit select mode
     private void exitSelectMode(){
         if(mActionMode != null) {
             mActionMode.finish();
@@ -210,13 +201,10 @@ public class SearchActivity extends BaseActivity implements UserListAdapter.OnSt
         mAdapter.exitSelectState();
         mActionModeType = ACTION_MODE_NORMAL;
     }
-    // #endif
-    // #ifdef LAVA_EDIT
-    // wangxijun. 2016/11/16, add to multi select
     private class SelectActionMode implements ActionMode.Callback {
         @Override
         public boolean onCreateActionMode(final ActionMode mode, Menu menu) {
-            ViewGroup v = (ViewGroup) LayoutInflater.from(SearchActivity.this).inflate(R.layout.select_action_bar, null);
+            ViewGroup v = (ViewGroup) LayoutInflater.from(SearchUserActivity.this).inflate(R.layout.select_action_bar, null);
             mode.setCustomView(v);
             mSelectionAll = (TextView) v.findViewById(R.id.select_all);
             mSelectionCount = (TextView) v.findViewById(R.id.select_count);
@@ -266,5 +254,8 @@ public class SearchActivity extends BaseActivity implements UserListAdapter.OnSt
         }
         mSelectionCount.setText(selectCount+" ");
     }
-    // #endif
+    public static void startSearchUser(Context context){
+        Intent intent = new Intent(context,SearchUserActivity.class);
+        context.startActivity(intent);
+    }
 }

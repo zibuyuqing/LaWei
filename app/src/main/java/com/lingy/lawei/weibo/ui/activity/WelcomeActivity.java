@@ -23,7 +23,7 @@ public class WelcomeActivity extends Activity {
         if (AccessTokenKeeper.readAccessToken(this).isSessionValid()) {
             mStartIntent = new Intent(WelcomeActivity.this, MainActivity.class);
         } else {
-            mStartIntent = new Intent(WelcomeActivity.this, UnLoginActivity.class);
+            mStartIntent = new Intent(WelcomeActivity.this, LoginActivity.class);
         }
         new Timer().schedule(new TimerTask() {
             @Override

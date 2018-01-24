@@ -24,7 +24,6 @@ public abstract class BaseUserInfoFragment extends BaseDisplayInfoFragment {
             mAdapter = new UserListAdapter(mActivity, mUserList.getUsers());
         }
         mXRContentList.setAdapter(mAdapter);
-        Log.e(TAG,"mUid------------------- =:" + mUid);
         if(TextUtils.isEmpty(mUid)){
             return;
         }
@@ -45,20 +44,20 @@ public abstract class BaseUserInfoFragment extends BaseDisplayInfoFragment {
         mAdapter.exitSelectState();
     }
     public void displayData(UserList userList) {
-        if(refresh) {
+        if(mRefresh) {
             mXRContentList.refreshComplete();
         } else {
             mXRContentList.loadMoreComplete();
         }
         if (userList != null && userList.getUsers().size() > 0) {
-            if(!refresh){
-                hasMore = userList.getUsers().size() > 1;
-                if (hasMore) {
+            if(!mRefresh){
+                mHasMore = userList.getUsers().size() > 1;
+                if (mHasMore) {
                     List<User> list = userList.getUsers();
                     mUserList.getUsers().addAll(list);
                     mPage++;
                 } else {
-                    hasMore = false;
+                    mHasMore = false;
                 }
             } else {
                 clearAndReplaceValue(userList);

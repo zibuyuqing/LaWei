@@ -1,5 +1,6 @@
 package com.lingy.lawei.weibo.model.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  * Created by lingy on 2017-10-24.
  */
 
-public class StatusList {
+public class StatusList implements Serializable{
 
     private List<Status> statuses = new ArrayList<Status>();
     private int previous_cursor = 0;

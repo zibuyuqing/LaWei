@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:visibility="gone"
+    android:id="@+id/rl_tag_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="16dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="324dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="供选择的标签"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <me.gujun.android.taggroup.TagGroup
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/offered_tags"
+            style="@style/TagGroup.Beauty_Red"
+            android:layout_width="324dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:atg_borderStrokeWidth="0.7dp"
+            app:atg_textSize="15sp"
+            app:atg_horizontalSpacing="9dp"
+            app:atg_verticalSpacing="5dp"
+            app:atg_horizontalPadding="12dp"
+            app:atg_verticalPadding="4dp">
+        </me.gujun.android.taggroup.TagGroup>
+        <TextView
+            android:layout_marginTop="8dp"
+            android:text="已选择的标签"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <me.gujun.android.taggroup.TagGroup
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/offered_tags"
+            android:id="@+id/select_tags"
+            style="@style/TagGroup.Large"
+            android:layout_width="324dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:atg_borderStrokeWidth="0.7dp"
+            app:atg_textSize="15sp"
+            app:atg_horizontalSpacing="9dp"
+            app:atg_verticalSpacing="5dp"
+            app:atg_horizontalPadding="12dp"
+            app:atg_verticalPadding="4dp">
+        </me.gujun.android.taggroup.TagGroup>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_margin="8dp"
+            android:id="@+id/btn_custom_tag"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/custom_tag_button_bg"
+            android:text="自定义" />
+
+        <Button
+            android:layout_margin="8dp"
+            android:id="@+id/btn_confirm_tag"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/custom_tag_button_bg"
+            android:text="确定" />
+    </LinearLayout>
+</RelativeLayout>

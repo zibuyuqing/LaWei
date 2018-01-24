@@ -1,10 +1,10 @@
 
-package com.lingy.lawei.weibo.info;
+package com.lingy.lawei.weibo.api.info;
 
 import android.os.Build;
 
 
-public class WeiBoURLs {
+public class WeiboURLs {
 
     // base url
     private static final String URL_SINA_WEIBO = "https://api.weibo.com/2/";

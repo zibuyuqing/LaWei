@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.lingy.lawei.R;
 import com.lingy.lawei.utils.StringUtil;
-import com.lingy.lawei.weibo.ui.activity.WeiBoDetailActivity;
 import com.lingy.lawei.weibo.ui.activity.WeiboDetailActivity;
 import com.lingy.lawei.weibo.model.bean.Status;
 import com.lingy.lawei.weibo.model.bean.User;
@@ -26,6 +25,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+
 
 
 /**
@@ -106,13 +106,13 @@ public class WeiboListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             if(status.getRetweeted_status() != null) {
                 etOriginWeiBoContent.setVisibility(View.VISIBLE);
                 etOriginWeiBoContent.setText(
-                        StringUtil.getWeiBoText(context, status.getRetweeted_status().getText()));
+                        StringUtil.getWeiboText(context, status.getRetweeted_status().getText()));
                 rvImages.setBackground(context.getDrawable(R.drawable.home_retweet_weiboitem_bg_auto));
             } else {
                 etOriginWeiBoContent.setVisibility(View.GONE);
                 rvImages.setBackground(null);
             }
-            etWeiBoContent.setText(StringUtil.getWeiBoText(context,status.getText()));
+            etWeiBoContent.setText(StringUtil.getWeiboText(context,status.getText()));
             List<Status.ThumbnailPic> imageUrls = status.getPic_urls();
             int itemImagesCount = 0;
             GridLayoutManager manager;
